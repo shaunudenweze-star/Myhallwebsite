@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Online Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #2a9d8f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    #cart {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #e76f51;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav {
+      background: #264653;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #2a9d8f;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+    }
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product button {
+      background: #e76f51;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .product button:hover {
+      background: #f4a261;
+    }
+    #popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #2a9d8f;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #264653;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Demo Store</h1>
+    <p>Best products for your everyday needs</p>
+    <div id="cart">0</div>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+1" alt="Product 1">
+      <h3>Product 1</h3>
+      <p>$19.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+2" alt="Product 2">
+      <h3>Product 2</h3>
+      <p>$29.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+3" alt="Product 3">
+      <h3>Product 3</h3>
+      <p>$39.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+4" alt="Product 4">
+      <h3>Product 4</h3>
+      <p>$49.99</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="popup">Added to Cart!</div>
+
+  <footer>
+    &copy; 2026 My Demo Store. All rights reserved.
+  </footer>
+
+  <script>
+    let cartCount = 0;
+    const cart = document.getElementById('cart');
+    const buttons = document.querySelectorAll('.product button');
+    const popup = document.getElementById('popup');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        cartCount++;
+        cart.textContent = cartCount;
+
+        popup.style.display = 'block';
+        setTimeout(() => {
+          popup.style.display = 'none';
+        }, 1000);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
